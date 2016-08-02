@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="502px" height="491px" viewBox="0 0 502 491" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>simple-european</title>
+    <desc>Simple european like street map.</desc>
+    <defs></defs>
+    <g id="Group" stroke="#979797">
+        <path d="M117.5,287.5 L501.5,0.5" id="Line"></path>
+        <path d="M122.5,120.5 L440.5,332.5" id="Line"></path>
+        <path d="M375.5,17.5 L404.5,425.5" id="Line"></path>
+        <path d="M116.5,261.5 L459.5,450.5" id="Line"></path>
+        <path d="M52.5,42.5 L57.5,490.5" id="Line"></path>
+        <path d="M9.5,442.5 L439.5,330.5" id="Line"></path>
+        <path d="M202.5,99.5 L0.5,250.5" id="Line"></path>
+    </g>
+</svg>
