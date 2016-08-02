@@ -35,7 +35,7 @@ setup(
     packages=find_packages(),
     keywords='city parcel generator',
     install_requires=[],
-    extras_require={},
+    extras_require={'dev': ['pep8>=1.7.0']},
     entry_points='''
         [console_scripts]
         cityparcelator=cityparcelator.scripts.cityparcelator:cli
