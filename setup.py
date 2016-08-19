@@ -18,19 +18,29 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 """
-
+import os
 from setuptools import setup, find_packages
 
+srcdir = os.path.dirname(__file__)
+
+
+def read(fname):
+    return open(os.path.join(srcdir, fname)).read()
+
+long_description = ''
+if os.path.exists('README.txt'):
+    long_description = read('README.txt')
+
 setup(
-    version='0.1.0',
     name="cityparcelator",
-    description='''
-        Cityparcelator is a python 3 engine, which generates building parcels
-        on a SVG street map using a blocksubdivision algorithm.
-    ''',
-    url='https://github.com/rqelibari/cityparcelator',
+    version='0.1.0',
     author='Rezart Qelibari',
     author_email='qelibarr@informatik.uni-freiburg.de',
+    url='https://github.com/rqelibari/cityparcelator',
+    description='A building parcel generator, which works on SVG street maps.',
+    long_description=long_description,
+    download_url='https://github.com/rqelibari/pygonal/archive/master.zip',
+    provides=['cityparcelator'],
     license='Apache 2.0',
     packages=find_packages(),
     keywords='city parcel generator',
@@ -41,7 +51,6 @@ setup(
         cityparcelator=cityparcelator.scripts.cityparcelator:cli
     ''',
     test_suite="cityparcelator.tests",
-    zip_safe=False,
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -51,5 +60,7 @@ setup(
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 3.5',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: POSIX'
     ]
 )
