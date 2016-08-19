@@ -44,7 +44,7 @@ setup(
     license='Apache 2.0',
     packages=find_packages(),
     keywords='city parcel generator',
-    install_requires=[],
+    install_requires=['click>=6.6'],
     extras_require={'dev': ['pep8>=1.7.0']},
     entry_points='''
         [console_scripts]
