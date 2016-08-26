@@ -19,7 +19,7 @@
     limitations under the License.
 """
 import click
-from cityparcelator.mapfilehandler import MapFileHandler
+from cityparcelator.mapfilehandler.mapfilehandler import MapFileHandler
 
 
 @click.command()
