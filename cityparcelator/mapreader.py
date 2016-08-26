@@ -30,7 +30,7 @@ class MapReader(object):
     def __init__(self, pInputFilePath, pOutputFilePath):
         """
         Behaviour:
-         Init class with file at svgFilePathself. Calls 'parseSVGFile'.
+         Init class with file at pInputFilePath and pOutputFilePath.
 
         Arguments:
          pInputFilePath -- the path to the readable file from which to parse
@@ -41,10 +41,61 @@ class MapReader(object):
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(
                 "File to get paths from is {}".format(pInputFilePath))
+            logger.debug(
+                "File to write paths to is {}".format(pOutputFilePath))
+
         self._inputFilePath = pInputFilePath
         self._outputFilePath = pOutputFilePath
-        self._pointClass = tuple
-        self._segmentClass = tuple
+        self._inputHandler = self._getInputFileHandler()
+        pass
+
+    def setPointClass(self, pPointClass):
+        """
+        See MapInputHandler.setPointClass.
+        """
+        pass
+
+    def setSegmentClass(self, pSegmentClass):
+        """
+        See MapInputHandler.setSegmentClass.
+        """
+        pass
+
+    def _getInputFileHandler(self):
+        """
+        Behaviour:
+         Decides which input handler class to return by file type of
+         'self._inputFilePath'.
+
+        Return value:
+         - MapInputHandler -- returns a input handler class
+
+        Restrictions:
+         Currently it returns only MapInputSVG.
+        """
+        pass
+
+
+
+class MapInputHandler(object):
+    """
+    Handles the parsing of a file which contains a street network.
+    """
+    def __init__(self, pInputFilePath, pPointClass = None,
+                 pSegmentClass = None):
+        """
+        Behaviour:
+         Init class with file at pInputFilePath and pOutputFilePath.
+
+        Arguments:
+         pInputFilePath -- the path to the readable file from which to parse
+                           the streets.
+         pPointClass -- see self.setPointClass
+         pSegmentClass -- see self.setSegmentClass
+        """
+        self._inputFilePath = pInputFilePath
+        self._pointClass = tuple if pPointClass is None else pPointClass
+        self._segmentClass = tuple if pSegmentClass is None else pSegmentClass
         pass
 
     def setPointClass(self, pPointClass):
@@ -79,3 +130,20 @@ class MapReader(object):
          Segments, parsed before the call will remain unchanged.
         """
         self._segmentClass = pSegmentClass
+
+
+class MapOutputHandler(object):
+    """
+    Handles the writing of a street network with blocks to a file.
+    """
+    def __init__(self, pOutputFilePath):
+        """
+        Behaviour:
+         Init class with pOutputFilePath.
+
+        Arguments:
+         pOutputFilePath -- the path where to write paths (modified or new
+                            paths).
+        """
+        self._outputFilePath = pOutputFilePath
+        pass
