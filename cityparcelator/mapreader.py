@@ -27,17 +27,22 @@ class MapReader(object):
     Reads a roadmap of a city (currently as a SVG file) and represents it as
     a networkx graph.
     """
-    def __init__(self, pSvgFilePath, pOutputPath):
+    def __init__(self, pInputFilePath, pOutputFilePath):
         """
         Behaviour:
          Init class with file at svgFilePathself. Calls 'parseSVGFile'.
 
         Arguments:
-         pSvgFilePath -- the path to the readable svg file.
+         pInputFilePath -- the path to the readable file from which to parse
+                           the streets.
+         pOutputFilePath -- the path where to write paths (modified or new
+                            paths).
         """
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(
-                "File to get paths from is {}".format(pSvgFilePath))
+                "File to get paths from is {}".format(pInputFilePath))
+        self._inputFilePath = pInputFilePath
+        self._outputFilePath = pOutputFilePath
         self._pointClass = tuple
         self._segmentClass = tuple
         pass
