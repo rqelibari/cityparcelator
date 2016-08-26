@@ -75,3 +75,6 @@ class MapInputHandler(object):
          Segments, parsed before the call will remain unchanged.
         """
         self._segmentClass = pSegmentClass
+
+    def parseFile(self):
+        raise NotImplementedError("Should be implemented in subclasses.")
