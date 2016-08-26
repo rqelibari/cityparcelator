@@ -19,7 +19,7 @@
     limitations under the License.
 """
 import logging
-from mapinputsvghandler import MapInputSVGHandler
+from cityparcelator.mapfilehandler.mapinputsvghandler import MapInputSVGHandler
 logger = logging.getLogger(__name__)
 
 
@@ -38,6 +38,9 @@ class MapFileHandler(object):
                            the streets.
          pOutputFilePath -- the path where to write paths (modified or new
                             paths).
+
+        Instance variables:
+         streets - list of parsed streets
         """
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(
@@ -48,7 +51,7 @@ class MapFileHandler(object):
         self._inputFilePath = pInputFilePath
         self._outputFilePath = pOutputFilePath
         self._inputHandler = self._getInputFileHandler()
-        pass
+        self.streets = []
 
     def setPointClass(self, pPointClass):
         """
@@ -61,6 +64,13 @@ class MapFileHandler(object):
         See MapInputHandler.setSegmentClass.
         """
         self._inputHandler.setSegmentClass(pSegmentClass)
+
+    def parseFile(self):
+        """
+        See MapInputHandler.parseFile.
+        """
+        self._inputHandler.parseFile()
+        self.streets = self._inputHandler.streets
 
     def _getInputFileHandler(self):
         """

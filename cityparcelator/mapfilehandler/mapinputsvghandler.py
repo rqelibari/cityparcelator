@@ -19,7 +19,7 @@
     limitations under the License.
 """
 import logging
-from mapinputhandler import MapInputHandler
+from cityparcelator.mapfilehandler.mapinputhandler import MapInputHandler
 from xml.dom.minidom import parse
 from svg.path import parse_path
 logger = logging.getLogger(__name__)

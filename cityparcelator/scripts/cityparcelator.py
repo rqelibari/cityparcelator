@@ -20,6 +20,8 @@
 """
 import click
 from cityparcelator.mapfilehandler.mapfilehandler import MapFileHandler
+from pygonal.vector import Vec2
+from pygonal.line import LineSegment
 
 
 @click.command()
@@ -35,4 +37,6 @@ from cityparcelator.mapfilehandler.mapfilehandler import MapFileHandler
 def cli(svgfile, outfile, variance, min, max):
     """Read SVG file and generate parcels."""
     mp = MapFileHandler(svgfile, outfile)
+    mp.setPointClass(Vec2)
+    mp.setSegmentClass(LineSegment)
     pass
