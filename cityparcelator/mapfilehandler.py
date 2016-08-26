@@ -22,7 +22,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class MapReader(object):
+class MapFileHandler(object):
     """
     Reads a roadmap of a city (currently as a SVG file) and represents it as
     a networkx graph.

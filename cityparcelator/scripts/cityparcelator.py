@@ -19,7 +19,7 @@
     limitations under the License.
 """
 import click
-from cityparcelator.mapreader import MapReader
+from cityparcelator.mapfilehandler import MapFileHandler
 
 
 @click.command()
@@ -34,5 +34,5 @@ from cityparcelator.mapreader import MapReader
 @click.argument('outfile', type=click.Path(), default="output.svg")
 def cli(svgfile, outfile, variance, min, max):
     """Read SVG file and generate parcels."""
-    mp = MapReader(svgfile, outfile)
+    mp = MapFileHandler(svgfile, outfile)
     pass
