@@ -38,4 +38,39 @@ class MapReader(object):
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(
                 "File to get paths from is {}".format(pSvgFilePath))
+        self._pointClass = tuple
+        self._segmentClass = tuple
         pass
+
+    def setPointClass(self, pPointClass):
+        """
+        Behaviour:
+        Set the class, which shall be used to represent the endpoints of a
+        street. Default is tuple.
+
+        Arguments:
+         pPointClass -- A reference to the class which shall represent points.
+                        Constructor of the class must take two arguments
+                        (x, y).
+
+        Restrictions:
+         Paths, parsed before the call will remain unchanged.
+        """
+        self._pointClass = pPointClass
+
+    def setSegmentClass(self, pSegmentClass):
+        """
+        Behaviour:
+        Set the class, which shall be used to represent the segment of a
+        street. Default is tuple.
+
+        Arguments:
+         pSegmentClass --  A reference to the class which shall represent line
+                           segments. Constructor of the class must take two
+                           arguments (startPoint, endPoint), both of type
+                           _pointClass (can be set with self.setPointClass).
+
+        Restrictions:
+         Segments, parsed before the call will remain unchanged.
+        """
+        self._segmentClass = pSegmentClass
