@@ -21,6 +21,62 @@
 import logging
 logger = logging.getLogger(__name__)
 
+
+class MapFileHandler(object):
+    """
+    Reads a roadmap of a city (currently as a SVG file) and represents it as
+    a networkx graph.
+    """
+    def __init__(self, pInputFilePath, pOutputFilePath):
+        """
+        Behaviour:
+         Init class with file at pInputFilePath and pOutputFilePath.
+
+        Arguments:
+         pInputFilePath -- the path to the readable file from which to parse
+                           the streets.
+         pOutputFilePath -- the path where to write paths (modified or new
+                            paths).
+        """
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug(
+                "File to get paths from is {}".format(pInputFilePath))
+            logger.debug(
+                "File to write paths to is {}".format(pOutputFilePath))
+
+        self._inputFilePath = pInputFilePath
+        self._outputFilePath = pOutputFilePath
+        self._inputHandler = self._getInputFileHandler()
+        pass
+
+    def setPointClass(self, pPointClass):
+        """
+        See MapInputHandler.setPointClass.
+        """
+        pass
+
+    def setSegmentClass(self, pSegmentClass):
+        """
+        See MapInputHandler.setSegmentClass.
+        """
+        pass
+
+    def _getInputFileHandler(self):
+        """
+        Behaviour:
+         Decides which input handler class to return by file type of
+         'self._inputFilePath'.
+
+        Return value:
+         - MapInputHandler -- returns a input handler class
+
+        Restrictions:
+         Currently it returns only MapInputSVG.
+        """
+        pass
+
+
+
 class MapInputHandler(object):
     """
     Handles the parsing of a file which contains a street network.
@@ -74,3 +130,20 @@ class MapInputHandler(object):
          Segments, parsed before the call will remain unchanged.
         """
         self._segmentClass = pSegmentClass
+
+
+class MapOutputHandler(object):
+    """
+    Handles the writing of a street network with blocks to a file.
+    """
+    def __init__(self, pOutputFilePath):
+        """
+        Behaviour:
+         Init class with pOutputFilePath.
+
+        Arguments:
+         pOutputFilePath -- the path where to write paths (modified or new
+                            paths).
+        """
+        self._outputFilePath = pOutputFilePath
+        pass
