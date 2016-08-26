@@ -18,21 +18,24 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 """
-import click
-from cityparcelator.mapreader import MapReader
+import logging
+logger = logging.getLogger(__name__)
 
 
-@click.command()
-@click.option('--variance', '-v', help='Variance of subdivision.',
-              default=.5, type=float)
-@click.option('--max', '-M', help='Max sidelength in meters subdivision box.',
-              default=55, type=float)
-@click.option('--min', '-m',
-              help='Min sidelength in meters of subdivision box.', default=10,
-              type=float)
-@click.argument('svgfile', type=click.Path(exists=True))
-@click.argument('outfile', type=click.Path(), default="output.svg")
-def cli(svgfile, outfile, variance, min, max):
-    """Read SVG file and generate parcels."""
-    mp = MapReader(svgfile, outfile)
-    pass
+class MapReader(object):
+    """
+    Reads a roadmap of a city (currently as a SVG file) and represents it as
+    a networkx graph.
+    """
+    def __init__(self, pSvgFilePath, pOutputPath):
+        """
+        Behaviour:
+         Init class with file at svgFilePathself. Calls 'parseSVGFile'.
+
+        Arguments:
+         pSvgFilePath -- the path to the readable svg file.
+        """
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug(
+                "SVG file to get paths from is {}".format(pSvgFilePath))
+        pass
