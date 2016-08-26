@@ -19,6 +19,7 @@
     limitations under the License.
 """
 import logging
+from mapinputsvghandler import MapInputSVGHandler
 logger = logging.getLogger(__name__)
 
 
@@ -53,13 +54,13 @@ class MapFileHandler(object):
         """
         See MapInputHandler.setPointClass.
         """
-        pass
+        self._inputHandler.setPointClass(pPointClass)
 
     def setSegmentClass(self, pSegmentClass):
         """
         See MapInputHandler.setSegmentClass.
         """
-        pass
+        self._inputHandler.setSegmentClass(pSegmentClass)
 
     def _getInputFileHandler(self):
         """
@@ -73,4 +74,4 @@ class MapFileHandler(object):
         Restrictions:
          Currently it returns only MapInputSVG.
         """
-        pass
+        return MapInputSVGHandler(self._inputFilePath)
