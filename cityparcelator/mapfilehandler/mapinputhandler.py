@@ -37,10 +37,14 @@ class MapInputHandler(object):
                            the streets.
          pPointClass -- see self.setPointClass
          pSegmentClass -- see self.setSegmentClass
+
+        Instance variables:
+         streets - list of parsed streets
         """
         self._inputFilePath = pInputFilePath
         self._pointClass = tuple if pPointClass is None else pPointClass
         self._segmentClass = tuple if pSegmentClass is None else pSegmentClass
+        self.streets = []  # list of segments of points
         pass
 
     def setPointClass(self, pPointClass):
@@ -77,4 +81,9 @@ class MapInputHandler(object):
         self._segmentClass = pSegmentClass
 
     def parseFile(self):
+        """
+        Behaviour:
+         Point where the actual parsing of the file starts.
+        """
+
         raise NotImplementedError("Should be implemented in subclasses.")
