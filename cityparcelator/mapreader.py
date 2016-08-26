@@ -37,5 +37,5 @@ class MapReader(object):
         """
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(
-                "SVG file to get paths from is {}".format(pSvgFilePath))
+                "File to get paths from is {}".format(pSvgFilePath))
         pass
